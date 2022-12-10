@@ -10,12 +10,12 @@ branches:
 before_install:
   - chmod +x gradlew
 
-# Travis CI 서버의 HOME
+# Travis CI 서버의 Home
 cache:
   directories:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
-
+    -
 script: "./gradlew clean build"
 
 before_deploy:
@@ -37,8 +37,6 @@ deploy:
     # 위에서 만든 deploy 디렉토리의 파일들만 S3로 전송
     local_dir: deploy
     wait-until-deployed: true
-    on:
-      all_branches: true
 
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY
